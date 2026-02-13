@@ -1,3 +1,8 @@
+import Link from "next/link";
+import Image from "next/image";
+import Menu from "@/src/components/Menu";
+import Navbar from "@/src/components/Navbar";
+
 export default function DashboardLayout({
     children,
 }: Readonly <{
@@ -6,9 +11,18 @@ export default function DashboardLayout({
     return (
             <div className="h-screen flex">
                 {/* LEFT */}
-                <div className="w-1/6 bg-red-50">r</div>
+                <div className="w-[14%] md:w-[8%] lg:w-[16%] xlg:w-[14%] p-4">
+                    <Link href="/" className="flex items-center justify-center lg:justify-start gap-2">
+                    <Image src="/logo.png" alt="logo" width={32} height={32}/>
+                    <span className="hidden lg:block">ChildCareConnect</span>
+                    </Link>
+                    <Menu/>
+                </div>
                 {/*RIGHT*/}
-                <div className="w-5/6">h</div>
+                <div className="w-[86%] md:w-[92%] lg:w-[84%] xlg:w-[86%] bg-[#F7F8FA overflow-scroll">
+                    <Navbar />
+                    {children}
+                </div>
             </div>
     );
 }

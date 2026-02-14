@@ -1,9 +1,24 @@
+import Announcements from '@/src/components/Announcements'
+import BigCalendar from '@/src/components/BigCalendar';
 import React from 'react'
 
-const Parentpage = () => {
+const ParentPage = () => {
   return (
-    <div>Parentpage</div>
-  )
-}
+    <div className='flex-1 p-4 flex gap-4 flex-col xl:flex-row'>
+      {/*LEFT*/}
+      <div className='w-full xl:w-2/3'>
+       <div className='h-full bg-white p-4 rounded-md'>
+        <h1 className='text-xl font-semibold'>Schedule (John Doe)</h1>
+        <BigCalendar/>
+       </div>
+      </div>
+      {/*RIGHT*/}
+      <div className='w-full xl:w-1/3 gap-8 flex flex-col'>
+       
+       <Announcements />
+      </div>
+    </div>
+  );
+};
 
-export default Parentpage
+export default ParentPage;

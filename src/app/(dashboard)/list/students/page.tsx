@@ -6,15 +6,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-type Teacher = {
+type Student = {
   id:number;
-  teacherId:string;
+  studentId:string;
   name:string;
   email?:string;
   photo:string;
   phone:string;
   subjects:string[];
-  classes:string[];
+  class:string;
   address:string;
 };
 const columns = [
@@ -23,8 +23,8 @@ const columns = [
     accessor:"info",
   },
   {
-    header: "Teacher ID",
-    accessor: "teacherId",
+    header: "Student ID",
+    accessor: "studentId",
     className: "hidden md:table-cell",
   },
   {
@@ -33,14 +33,14 @@ const columns = [
     className: "hidden md:table-cel;",
   },
   {
-    header: "Classes",
-    accessor: "classes",
-    className: "hidden md:table-cell"
+    header: "Class",
+    accessor: "class",
+    className: "hidden md:table-cell",
   },
   {
     header: "Phone",
     accessor: "phone",
-    className: "hidden lg:table-cell"
+    className: "hidden lg:table-cell",
   },
   {
     header: "Address ",
@@ -55,7 +55,7 @@ const columns = [
 
 const StudentListPage = () => {
 
-  const renderRow = (item:Teacher) => (
+  const renderRow = (item:Student) => (
     <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-[#F1F0FF]">
       <td className="flex items-center gap-4 p-4">
         <Image 
@@ -67,12 +67,12 @@ const StudentListPage = () => {
         />
         <div className='flex flex-col '>
           <h3 className='font-semibold'>{item.name}</h3>
-          <h4 className='text-xs text-gray-500'>{item?.email}</h4>
+          <h4 className='text-xs text-gray-500'>{item?.class}</h4>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.teacherId}</td>
+      <td className="hidden md:table-cell">{item.studentId}</td>
       <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-      <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+      <td className="hidden md:table-cell">{item.class}</td>
       <td className="hidden md:table-cell">{item.phone}</td>
       <td className="hidden md:table-cell">{item.address}</td>
       <td>
@@ -83,7 +83,7 @@ const StudentListPage = () => {
            </button>
           </Link>
            {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-[CFCEFF] ">
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-[#CFCEFF] ">
             <Image src="/view.png" alt="" width={16} height={16}/>
             </button>
             )}
@@ -124,4 +124,4 @@ const StudentListPage = () => {
   )
 }
 
-export default StudentListPage
+export default StudentListPage;

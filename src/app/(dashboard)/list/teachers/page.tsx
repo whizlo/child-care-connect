@@ -7,16 +7,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-type Student = {
+type Teacher = {
   id:number;
-  studentId:string;
+  teacherId:string;
   name:string;
   email?:string;
   photo:string;
   phone:string;
-  grade:number;
   subjects:string[];
-  class:string;
+  classes:string[];
   address:string;
 };
 const columns = [
@@ -25,8 +24,8 @@ const columns = [
     accessor:"info",
   },
   {
-    header: "Student ID",
-    accessor: "studentId",
+    header: "Teacher ID",
+    accessor: "teacherId",
     className: "hidden md:table-cell",
   },
   {
@@ -35,8 +34,8 @@ const columns = [
     className: "hidden md:table-cel;",
   },
   {
-    header: "Class",
-    accessor: "class",
+    header: "Classes",
+    accessor: "classes",
     className: "hidden md:table-cell"
   },
   {
@@ -57,7 +56,7 @@ const columns = [
 
 const TeacherListPage = () => {
 
-  const renderRow = (item:Student) => (
+  const renderRow = (item:Teacher) => (
     <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-[#F1F0FF]">
       <td className="flex items-center gap-4 p-4">
         <Image 
@@ -69,13 +68,13 @@ const TeacherListPage = () => {
         />
         <div className='flex flex-col '>
           <h3 className='font-semibold'>{item.name}</h3>
-          <h4 className='text-xs text-gray-500'>{item?.class}</h4>
+          <h4 className='text-xs text-gray-500'>{item?.email}</h4>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.studentId}</td>
+      <td className="hidden md:table-cell">{item.teacherId}</td>
       <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-      <td className="hidden md:table-cell">{item.class}</td>
-      <td className="hidden md:table-cell">{item.grade}</td>
+      <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+      
       <td className="hidden md:table-cell">{item.phone}</td>
       <td className="hidden md:table-cell">{item.address}</td>
       <td>
